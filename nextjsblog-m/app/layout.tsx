@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import './globals.css'
+import "../styles/globals.css";
+import Image from 'next/image';
 import Link from 'next/link'
+import HeadComponent from './headComponent';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,26 +20,30 @@ export default function RootLayout({
 
   const header = (
     <header>
-      <div>
-        <Link href="/"><h1>Augusto Leão Blog!</h1></Link>
-        <p>Seja bem vindo ao meu blog!</p>
+      
+      <div className='text-center bg-slate-700 p-8 my-6 rounded-lg shadow-md'>
+      <Image src="/logo.png" width={80} height={80} className="mx-auto" alt={''}/>
+        <Link href="/">
+         <h1 className="text-3xl text-white">Augusto Leão Blog</h1>
+        </Link>
+        <p className="text-slate-400">  Seja bem vindo ao meu blog!</p>
       </div>
     </header>
   );
 
   const footer = ( 
-    <footer>
+    <footer className=' text-center border-t border-slate-600 mt-6 py-6 text-slate-400'>
       <div>
-        <p>Augusto Leão Blog</p>
+        <h3>Desenvolvido por Augusto Leão</h3>
       </div>
     </footer>
   )
 
   return (
     <html lang="en">
-      <head />
-      
-      <body>
+     
+      <HeadComponent/> 
+      <body className="mx-auto max-w-2xl px-6">
       {header}
         {children}
       {footer}
